@@ -109,9 +109,9 @@ source $HOME/.bash_profile
 ```
 NOT: Node adınızı yazınız.
 ```
-pchaind config node tcp://localhost:${PUSH_PORT}657
-pchaind config keyring-backend os
-pchaind config chain-id push_42101-1
+pchaind config set client chain-id push_42101-1
+pchaind config set client keyring-backend os
+pchaind config set client node tcp://localhost:${PUSH_PORT}657
 pchaind init "Node-Adi" --chain-id push_42101-1
 ```
 ### 🚧 Genesis addrbook
