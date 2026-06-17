@@ -15,10 +15,21 @@
  * [Topluluk kanalımız](https://t.me/corenodechat)<br>
  * [Topluluk Twitter](https://twitter.com/corenodeHQ)<br>
  * [Push Chain Website](https://push.org/knowledge/)<br>
- * [Blockchain Explorer](https://explorer.corenodehq.com/pushchain)<br>
+ * [Blockchain Explorer](https://explorer.corenodehq.xyz/Push-testnet)<br>
  * [Discord](https://discord.com/invite/pushchain)<br>
  * [Twitter](https://x.com/PushChain)<br>
  * [Faucet](https://faucet.push.org/)<br>
+
+
+ ### Public RPC & Explorer
+
+ https://push-testnet-api.corenodehq.xyz
+
+ https://push-testnet-rpc.corenodehq.xyz
+
+ https://push-testnet-evm.corenodehq.xyz
+
+ https://explorer.corenodehq.xyz/Push-testnet
 
 ## 💻 Sistem Gereksinimleri
 | Bileşenler | Minimum Gereksinimler | 
