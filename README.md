@@ -202,7 +202,7 @@ pchaind keys add cüzdan-adi --recover
 ```
 ### 🚧 Validator Olusturma
 ```
-echo ""{\"pubkey\":{\"@type\":\"/cosmos.crypto.ed25519.PubKey\",\"key\":\"$(pchaind comet show-validator | grep -Po '\"key\":\s*\"\K[^"]*')\"},
+echo "{\"pubkey\":{\"@type\":\"/cosmos.crypto.ed25519.PubKey\",\"key\":\"$(pchaind comet show-validator | grep -Po '\"key\":\s*\"\K[^"]*')\"},
     \"amount\": \"1000000000000000000upc\",
     \"moniker\": \"nodeismin\",
     \"identity\": \"keybasecode\",
