@@ -105,8 +105,8 @@ pchaind init "Node-Adi" --chain-id push_42101-1
 ```
 ### 🚧 Genesis addrbook
 ```
-wget -O $HOME/.pchain/config/genesis.json https://snapshot.corenodehq.xyz/pchain/genesis.json
-wget -O $HOME/.pchain/config/addrbook.json  https://snapshot.corenodehq.xyz/pchain/addrbook.json
+wget -O $HOME/.pchain/config/genesis.json https://snapshot.corenodehq.xyz/push/genesis.json
+wget -O $HOME/.pchain/config/addrbook.json  https://snapshot.corenodehq.xyz/push/addrbook.json
 ```
 ### 🚧 Peer
 ```
@@ -154,7 +154,7 @@ pchaind comet unsafe-reset-all --home $HOME/.pchain
 cp $HOME/.pchain/data/priv_validator_state.json $HOME/.pchain/priv_validator_state.json.backup
 rm -rf $HOME/.pchain/data $HOME/state/wasm
 
-SNAPSHOT_URL="https://snapshot.corenodehq.xyz/pchain/"
+SNAPSHOT_URL="https://snapshot.corenodehq.xyz/push/"
 LATEST_SNAPSHOT=$(curl -s $SNAPSHOT_URL | grep -oP 'pchain_\d+\.tar\.lz4' | sort -t_ -k2 -n | tail -n 1)
 
 if [ -n "$LATEST_SNAPSHOT" ]; then
