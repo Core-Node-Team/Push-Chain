@@ -159,32 +159,13 @@ sed -i -e "s|^node *=.*|node = \"tcp://localhost:${PUSH_PORT}657\"|" $HOME/.pcha
 ```
 ### 🚧 Snap
 ```
-pchaind comet unsafe-reset-all --home $HOME/.pchain
-
-
-cp $HOME/.pchain/data/priv_validator_state.json $HOME/.pchain/priv_validator_state.json.backup
-rm -rf $HOME/.pchain/data $HOME/state/wasm
-
-SNAPSHOT_URL="https://snapshot.corenodehq.xyz/push/"
-LATEST_SNAPSHOT=$(curl -s $SNAPSHOT_URL | grep -oP 'pchain_\d+\.tar\.lz4' | sort -t_ -k2 -n | tail -n 1)
-
-if [ -n "$LATEST_SNAPSHOT" ]; then
-  FULL_URL="${SNAPSHOT_URL}${LATEST_SNAPSHOT}"
-  if curl -s --head "$FULL_URL" | head -n 1 | grep "200" > /dev/null; then
-    curl "$FULL_URL" | lz4 -dc - | tar -xf - -C $HOME/.pchain
-    
-    mv $HOME/.pchain/priv_validator_state.json.backup $HOME/.pchain/data/priv_validator_state.json
-    
-    sudo systemctl restart pchaind && sudo journalctl -fu pchaind -o cat
-  else
-    echo "Snapshot URL is not accessible"
-  fi
-else
-  echo "No snapshot found"
+pchaind tendermint unsafe-reset-all --home $HOME/.pchain
+if curl -s --head curl https://snapshot.corenodehq.xyz/push/push_snap.tar.lz4 | head -n 1 | grep "200" > /dev/null; then
+  curl https://snapshot.corenodehq.xyz/push/push_snap.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.pchain
+    else
+  echo "no snapshot found"
 fi
 ```
-
-
 ### 🚧 Başlatalım
 ```
 sudo systemctl restart pchaind
