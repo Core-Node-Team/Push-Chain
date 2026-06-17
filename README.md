@@ -190,51 +190,13 @@ pchaind keys add cüzdan-adi
 pchaind keys add cüzdan-adi --recover
 ```
 ### 🚧 Validator Olusturma
-Not: altaki kodla pubkey öğren
 ```
-wardend comet show-validator
-```
-Not: öğrendiğin pubkeyi aşağıda nano ile içine akataracağın yere yazıcan
-```
-nano /root/validator.json
-```
-NOT: baska bele validator olusturmalı proje kuruluysa içi dolu olabilir. önemli değil zaten bikere kullanıyoruz sil bastan ekle yok sa zaten içi boş
-```
-{
-        "pubkey": pubyaz,
-        "amount": "1000000000000000000award",
-        "moniker": "myvalidator",
-        "identity": "optional identity signature (ex. UPort or Keybase)",
-        "website": "validator's (optional) website",
-        "security": "validator's (optional) security contact email",
-        "details": "validator's (optional) details",
-        "commission-rate": "0.1",
-        "commission-max-rate": "0.2",
-        "commission-max-change-rate": "0.01",
-        "min-self-delegation": "1"
-}
-```
-Not: ctrl xy enter kaydet çık.
-### Validator olusturucaz ama eşleşmesini beklemeniz gerek....
-```
-wardend tx staking create-validator /root/validator.json \
-    --from=cüzdan-adi \
-    --chain-id=warden_8765-1 \
-    --gas auto --gas-adjustment 1.6 --fees 250000000000000award \
-    --node=http://localhost:11957
-```
-### oto validator olusturma yukardaki ile yapamadıysız deneyin
-```
-cd $HOME
-```
-# Create validator.json file
-```
-echo ""{\"pubkey\":{\"@type\":\"/cosmos.crypto.ed25519.PubKey\",\"key\":\"$(wardend comet show-validator | grep -Po '\"key\":\s*\"\K[^"]*')\"},
-    \"amount\": \"1000000000000000000award\",
+echo ""{\"pubkey\":{\"@type\":\"/cosmos.crypto.ed25519.PubKey\",\"key\":\"$(pchaind comet show-validator | grep -Po '\"key\":\s*\"\K[^"]*')\"},
+    \"amount\": \"1000000000000000000upc\",
     \"moniker\": \"nodeismin\",
     \"identity\": \"keybasecode\",
-    \"website\": \"\",
-    \"security\": \"\",
+    \"website\": \"bura\",
+    \"security\": \"bura\",
     \"details\": \"details\",
     \"commission-rate\": \"0.1\",
     \"commission-max-rate\": \"0.2\",
@@ -242,31 +204,29 @@ echo ""{\"pubkey\":{\"@type\":\"/cosmos.crypto.ed25519.PubKey\",\"key\":\"$(ward
     \"min-self-delegation\": \"1\"
 }" > validator.json
 ```
-# Create a validator using the JSON configuration
+### OL :D
 ```
-wardend tx staking create-validator validator.json \
-    --from cuzdanismin \
-    --chain-id warden_8765-1 \
-    --gas auto --gas-adjustment 1.6 --fees 250000000000000award \
-    --node=http://localhost:11957
+pchaind tx staking create-validator validator.json \
+--from cüzdan-adi \
+--chain-id push_42101-1 \
+--gas auto --gas-adjustment 1.5 -y --fees 111333000000000upc
 ```
 
 
 ### Delege 
 ```
-wardend tx staking delegate valoper-adresi miktar000000000000000000award \
---chain-id warden_8765-1 \
---from "cüzdan-adi" \
---gas auto --gas-adjustment 1.6 --fees 250000000000000award \
---node=http://localhost:11957
+pchaind tx staking delegate valoper-adresi miktar000000000000000000upc \
+--from cüzdan-adi \
+--chain-id push_42101-1 \
+--gas auto --gas-adjustment 1.5 -y --fees 111333000000000upc
 ```
 
 ### Komple Silme
 ```
-sudo systemctl stop wardend
-sudo systemctl disable wardend
-sudo rm -rf /etc/systemd/system/wardend.service
-sudo rm $(which wardend)
-sudo rm -rf $HOME/.warden
-sed -i "/WARDEN_/d" $HOME/.bash_profile
+sudo systemctl stop pchaind
+sudo systemctl disable pchaind
+sudo rm -rf /etc/systemd/system/pchaind.service
+sudo rm $(which pchaind)
+sudo rm -rf $HOME/.pchain
+sed -i "/PUSH_/d" $HOME/.bash_profile
 ```
