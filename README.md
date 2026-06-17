@@ -1,9 +1,10 @@
 
 
-<h1 align="center"> Warden Protocol </h1>
+<h1 align="center"> Push Chain </h1>
 
 
-![image](https://github.com/molla202/Warden-Protocol/assets/91562185/32f62d0a-d2b1-4dfa-9b6a-60395461025f)
+<img width="1920" height="1415" alt="528046664-ccc04c2e-7190-470c-ab1c-5d7fe3e99f92" src="https://github.com/user-attachments/assets/462ca356-342b-4bb4-8b41-10428eaa0e53" />
+
 
 
 
@@ -13,10 +14,11 @@
 
  * [Topluluk kanalımız](https://t.me/corenodechat)<br>
  * [Topluluk Twitter](https://twitter.com/corenodeHQ)<br>
- * [Warden Website](https://wardenprotocol.org/)<br>
- * [Blockchain Explorer](https://explorer.corenodehq.com/Warden%20Testnet)<br>
- * [Discord](https://discord.gg/7rzkxXRK)<br>
- * [Twitter](https://twitter.com/wardenprotocol)<br>
+ * [Push Chain Website](https://push.org/knowledge/)<br>
+ * [Blockchain Explorer](https://explorer.corenodehq.com/pushchain)<br>
+ * [Discord](https://discord.com/invite/pushchain)<br>
+ * [Twitter](https://x.com/PushChain)<br>
+ * [Faucet](https://faucet.push.org/)<br>
 
 ## 💻 Sistem Gereksinimleri
 | Bileşenler | Minimum Gereksinimler | 
@@ -87,7 +89,7 @@ EOF
 ```
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable wardend
+sudo systemctl enable pchaind
 ```
 ### 🚧 İnit
 ```
@@ -103,8 +105,8 @@ pchaind init "Node-Adi" --chain-id push_42101-1
 ```
 ### 🚧 Genesis addrbook
 ```
-wget -O $HOME/.pchain/config/genesis.json https://server-5.itrocket.net/testnet/push/genesis.json
-wget -O $HOME/.pchain/config/addrbook.json  https://server-5.itrocket.net/testnet/push/addrbook.json
+wget -O $HOME/.pchain/config/genesis.json https://snapshot.corenodehq.xyz/pchain/genesis.json
+wget -O $HOME/.pchain/config/addrbook.json  https://snapshot.corenodehq.xyz/pchain/addrbook.json
 ```
 ### 🚧 Peer
 ```
@@ -150,9 +152,9 @@ pchaind comet unsafe-reset-all --home $HOME/.pchain
 
 
 cp $HOME/.pchain/data/priv_validator_state.json $HOME/.pchain/priv_validator_state.json.backup
-rm -rf $HOME/.warden/data
+rm -rf $HOME/.pchain/data $HOME/state/wasm
 
-SNAPSHOT_URL="https://files.corenodehq.xyz/pchain/snapshot/"
+SNAPSHOT_URL="https://snapshot.corenodehq.xyz/pchain/"
 LATEST_SNAPSHOT=$(curl -s $SNAPSHOT_URL | grep -oP 'pchain_\d+\.tar\.lz4' | sort -t_ -k2 -n | tail -n 1)
 
 if [ -n "$LATEST_SNAPSHOT" ]; then
