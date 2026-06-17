@@ -60,7 +60,6 @@ source $HOME/.bash_profile
 
 ### 🚧 Dosyaları çekelim ve kuralım
 ```
-
 cd $HOME
 mkdir -p $HOME/.pchain/cosmovisor/genesis/bin
 rm -rf ~/bin
@@ -69,14 +68,14 @@ tar -xvf push.tar.gz
 chmod +x $HOME/bin/pchaind
 mv $HOME/bin/pchaind $HOME/.pchain/cosmovisor/genesis/bin/pchaind
 ```
+```
 mkdir -p $HOME/.pchain/cosmovisor/upgrades/evm-v0-5-0/bin
 rm -rf ~/bin
 wget -O push.tar.gz https://github.com/pushchain/push-chain-node/releases/download/v0.0.39/push-chain_0.0.39_linux_amd64.tar.gz
 tar -xvf push.tar.gz
 chmod +x $HOME/bin/pchaind
 mv $HOME/bin/pchaind $HOME/.pchain/cosmovisor/upgrades/evm-v0-5-0/bin/pchaind
-
-evm-v0-5-0
+```
 ```
 sudo ln -s $HOME/.pchain/cosmovisor/genesis $HOME/.pchain/cosmovisor/current -f
 sudo ln -s $HOME/.pchain/cosmovisor/current/bin/pchaind /usr/local/bin/pchaind -f
