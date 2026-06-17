@@ -60,7 +60,7 @@ mv $HOME/bin/pchaind $HOME/.pchain/cosmovisor/genesis/bin/pchaind
 ```
 ```
 sudo ln -s $HOME/.pchain/cosmovisor/genesis $HOME/.pchain/cosmovisor/current -f
-sudo ln -s $HOME/.pchain/cosmovisor/current/pchaind /usr/local/bin/pchaind -f
+sudo ln -s $HOME/.pchain/cosmovisor/current/bin/pchaind /usr/local/bin/pchaind -f
 ```
 ```
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.6.0
