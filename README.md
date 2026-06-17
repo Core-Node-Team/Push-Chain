@@ -92,6 +92,7 @@ LimitNOFILE=65535
 Environment="DAEMON_HOME=$HOME/.pchain"
 Environment="DAEMON_NAME=pchaind"
 Environment="UNSAFE_SKIP_BACKUP=true"
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=true"
 Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.pchain/cosmovisor/current/bin"
 
 [Install]
