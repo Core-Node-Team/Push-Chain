@@ -220,7 +220,7 @@ echo "{\"pubkey\":{\"@type\":\"/cosmos.crypto.ed25519.PubKey\",\"key\":\"$(pchai
 pchaind tx staking create-validator validator.json \
 --from cüzdan-adi \
 --chain-id push_42101-1 \
---gas auto --gas-adjustment 1.5 -y --fees 111333000000000upc
+--gas auto --gas-adjustment 1.5 -y --fees 323982000000000upc
 ```
 
 
@@ -229,7 +229,7 @@ pchaind tx staking create-validator validator.json \
 pchaind tx staking delegate valoper-adresi miktar000000000000000000upc \
 --from cüzdan-adi \
 --chain-id push_42101-1 \
---gas auto --gas-adjustment 1.5 -y --fees 111333000000000upc
+--gas auto --gas-adjustment 1.5 -y --fees 323982000000000upc
 ```
 
 ### Komple Silme
