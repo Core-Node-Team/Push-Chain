@@ -69,6 +69,14 @@ tar -xvf push.tar.gz
 chmod +x $HOME/bin/pchaind
 mv $HOME/bin/pchaind $HOME/.pchain/cosmovisor/genesis/bin/pchaind
 ```
+mkdir -p $HOME/.pchain/cosmovisor/upgrades/evm-v0-5-0/bin
+rm -rf ~/bin
+wget -O push.tar.gz https://github.com/pushchain/push-chain-node/releases/download/v0.0.39/push-chain_0.0.39_linux_amd64.tar.gz
+tar -xvf push.tar.gz
+chmod +x $HOME/bin/pchaind
+mv $HOME/bin/pchaind $HOME/.pchain/cosmovisor/upgrades/evm-v0-5-0/bin/pchaind
+
+evm-v0-5-0
 ```
 sudo ln -s $HOME/.pchain/cosmovisor/genesis $HOME/.pchain/cosmovisor/current -f
 sudo ln -s $HOME/.pchain/cosmovisor/current/bin/pchaind /usr/local/bin/pchaind -f
@@ -160,12 +168,12 @@ sed -i -e "s|^node *=.*|node = \"tcp://localhost:${PUSH_PORT}657\"|" $HOME/.pcha
 ```
 ### 🚧 Snap
 ```
-pchaind tendermint unsafe-reset-all --home $HOME/.pchain
-if curl -s --head curl https://snapshot.corenodehq.xyz/push/push_snap.tar.lz4 | head -n 1 | grep "200" > /dev/null; then
-  curl https://snapshot.corenodehq.xyz/push/push_snap.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.pchain
-    else
-  echo "no snapshot found"
-fi
+sudo systemctl stop pchaind
+cp $HOME/.pchain/data/priv_validator_state.json $HOME/.pchain/priv_validator_state.json.backup
+rm -rf $HOME/.pchain/data $HOME/state/wasm
+curl https://snapshot.corenodehq.xyz/push/push_snap.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.pchain
+mv $HOME/.pchain/priv_validator_state.json.backup $HOME/.pchain/data/priv_validator_state.json
+sudo systemctl restart pchaind && sudo journalctl -u pchaind -f
 ```
 ### 🚧 Başlatalım
 ```
